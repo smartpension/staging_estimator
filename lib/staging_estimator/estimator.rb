@@ -51,7 +51,7 @@ module StagingEstimator
     end
 
     def less_that_30_employee_date
-      unless tax_office_employer_reference.present? && tax_office_employer_reference.length > 1
+      if tax_office_employer_reference.blank? || tax_office_employer_reference.length < 2
         return
       end
 
