@@ -23,8 +23,15 @@ describe StagingEstimator do
       end
 
       context 'when the reference is nil' do
-        it 'returns an empty string' do
+        it 'returns nil' do
           date = described_class.get(20)
+          expect(date).to be_nil
+        end
+      end
+
+      context 'when the reference length is less than 2 chars' do
+        it 'returns nil' do
+          date = described_class.get(20, 'X')
           expect(date).to be_nil
         end
       end

@@ -51,7 +51,9 @@ module StagingEstimator
     end
 
     def less_that_30_employee_date
-      return unless tax_office_employer_reference.present?
+      unless tax_office_employer_reference.present? && tax_office_employer_reference.length > 1
+        return
+      end
 
       return staging_date_exception.date if staging_date_exception.present?
       return grouped_staging_date.date if grouped_staging_date.present?
